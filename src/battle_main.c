@@ -4088,6 +4088,9 @@ void BattleTurnPassed(void)
         BattleScriptExecute(i == 1 ? BattleScript_TrainerASlideMsgEnd2 : BattleScript_TrainerBSlideMsgEnd2);
     else if ((i = ShouldDoTrainerSlide(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), TRAINER_SLIDE_PLAYER_MON_UNAFFECTED)))
         BattleScriptExecute(i == 1 ? BattleScript_TrainerASlideMsgEnd2 : BattleScript_TrainerBSlideMsgEnd2);
+
+
+    //Handle Weather at end of Turn
 }
 
 u8 IsRunningFromBattleImpossible(u32 battler)
