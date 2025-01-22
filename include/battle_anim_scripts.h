@@ -1014,5 +1014,18 @@ extern const u8 gBattleAnimSpecial_SubstituteToMon[];
 extern const u8 gBattleAnimSpecial_MonToSubstitute[];
 extern const u8 gBattleAnimSpecial_CriticalCaptureBallThrow[];
 
+// NEW WEATHER
+extern const u8 gBattleAnimGeneral_LightningStorm[];
+extern const u8 gBattleAnimGeneral_Earthquake[];
+extern const u8 gBattleAnimGeneral_Ether[];
+extern const u8 gBattleAnimGeneral_Pollen[];
+extern const u8 gBattleAnimGeneral_Tornado[];
+extern const u8 gBattleAnimGeneral_RegularDay[];
+extern const u8 gBattleAnimGeneral_Humid[];
+extern const u8 gBattleAnimGeneral_Fog[];
+extern const u8 gBattleAnimGeneral_Eclipse[];
+extern const u8 gBattleAnimGeneral_AcidRain[];
+//Rainbow already a part of the game
+extern const u8 gBattleAnimGeneral_SolarFlare[];
 
 #endif // GUARD_BATTLE_ANIM_SCRIPTS_H

@@ -585,7 +585,20 @@
 #define B_ANIM_TERA_ACTIVATE            51
 #define B_ANIM_SIMPLE_HEAL              52
 
-#define NUM_B_ANIMS_GENERAL             53
+// NEW WEATHERS
+#define B_ANIM_LIGHTNING_STORM          53
+#define B_ANIM_EARTHQUAKE               54
+#define B_ANIM_ETHER                    55
+#define B_ANIM_POLLEN                   56
+#define B_ANIM_TORNADO                  57
+#define B_ANIM_REGULAR_DAY              58
+#define B_ANIM_HUMID                    59
+#define B_ANIM_ECLIPSE                  60
+#define B_ANIM_ACID_RAIN                61
+//Rainbow already in game
+#define B_ANIM_SOLAR_FLARE              62
+
+#define NUM_B_ANIMS_GENERAL             63
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

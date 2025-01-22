@@ -251,6 +251,18 @@ static const u8* const sBattleAnims_General[NUM_B_ANIMS_GENERAL] =
     [B_ANIM_TERA_CHARGE]            = gBattleAnimGeneral_TeraCharge,
     [B_ANIM_TERA_ACTIVATE]          = gBattleAnimGeneral_TeraActivate,
     [B_ANIM_SIMPLE_HEAL]            = gBattleAnimGeneral_SimpleHeal,
+    // NEW WEATHER
+    [B_ANIM_LIGHTNING_STORM]        = gBattleAnimGeneral_LightningStorm,
+    [B_ANIM_EARTHQUAKE]             = gBattleAnimGeneral_Earthquake,
+    [B_ANIM_ETHER]                  = gBattleAnimGeneral_Ether,
+    [B_ANIM_POLLEN]                 = gBattleAnimGeneral_Pollen,
+    [B_ANIM_TORNADO]                = gBattleAnimGeneral_Tornado,
+    [B_ANIM_REGULAR_DAY]            = gBattleAnimGeneral_RegularDay,
+    [B_ANIM_HUMID]                  = gBattleAnimGeneral_Humid,
+    [B_ANIM_ECLIPSE]                = gBattleAnimGeneral_Eclipse,
+    [B_ANIM_ACID_RAIN]              = gBattleAnimGeneral_AcidRain,
+    //Rainbow already a part of the game
+    [B_ANIM_SOLAR_FLARE]            = gBattleAnimGeneral_SolarFlare,
 };
 
 static const u8* const sBattleAnims_Special[NUM_B_ANIMS_SPECIAL] =

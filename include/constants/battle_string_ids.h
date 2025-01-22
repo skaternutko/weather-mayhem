@@ -751,12 +751,21 @@
 #define STRINGID_POLLEN_DAMAGED                          745
 #define STRINGID_HUMID_DAMAGED                           746
 
-#define STRINGID_LIGHTNING_STORM_PARA                747
+#define STRINGID_LIGHTNING_STORM_PARA                   747
 #define STRINGID_ACID_RAIN_POISON                       748
 
-#define STRINGID_CHANGE_WEATHER                     749
+#define STRINGID_ICEEVAPORATEDINTHEHARSHSUNLIGHT        749
 
-#define BATTLESTRINGS_COUNT                           750
+#define STRINGID_LIGHTNING_STORM_PREP                   750
+#define STRINGID_ACID_RAIN_PREP                         751
+#define STRINGID_ETHER_NO_EFFECT_FIGHTING               752
+#define STRINGID_ETHER_NO_EFFECT_POISON                 753
+#define STRINGID_RAINBOW_NO_EFFECT_DARK                 754
+#define STRINGID_RAINBOW_NO_EFFECT_DRAGON               755
+
+#define STRINGID_CHANGE_WEATHER                         756
+
+#define BATTLESTRINGS_COUNT                           757
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -829,6 +838,10 @@
 #define B_MSG_SANDSTORM  0
 #define B_MSG_HAIL       1
 #define B_MSG_SNOW       2
+#define B_MSG_SUN        3
+#define B_MSG_EARTHQUAKE 4
+#define B_MSG_POLLEN     5
+#define B_MSG_HUMID      6
 
 // gReflectLightScreenSafeguardStringIds
 #define B_MSG_SIDE_STATUS_FAILED     0
@@ -914,9 +927,15 @@
 #define B_MSG_SOMEONES_BOX_FULL 2
 #define B_MSG_LANETTES_BOX_FULL 3
 
-// gPrimalWeatherBlocksStringIds
+// gPrimalWeatherBlocksStringIds + new weather ones
 #define B_MSG_PRIMAL_WEATHER_FIZZLED_BY_RAIN    0
 #define B_MSG_PRIMAL_WEATHER_EVAPORATED_IN_SUN  1
+#define B_MSG_ICE_EVAPORATED_IN_SUN             2
+#define B_MSG_ETHER_FIGHTING                    3                 
+#define B_MSG_ETHER_POISON                      4
+#define B_MSG_RAINBOW_DARK                      5
+#define B_MSG_RAINBOW_DRAGON                    6
+
 
 // gInobedientStringIds
 #define B_MSG_LOAFING            0

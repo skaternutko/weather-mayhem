@@ -740,11 +740,11 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ATTACKERBECAMEASHSPECIES]             = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} became Ash-Greninja!\p"),
     [STRINGID_EXTREMELYHARSHSUNLIGHT]               = COMPOUND_STRING("The sunlight turned extremely harsh!"),
     [STRINGID_EXTREMESUNLIGHTFADED]                 = COMPOUND_STRING("The extremely harsh sunlight faded!"),
-    [STRINGID_MOVEEVAPORATEDINTHEHARSHSUNLIGHT]     = COMPOUND_STRING("The Water-type attack evaporated in the extremely harsh sunlight!"),
+    [STRINGID_MOVEEVAPORATEDINTHEHARSHSUNLIGHT]     = COMPOUND_STRING("The Water-type attack evaporated in the blisteringly harsh sunlight!"),
     [STRINGID_EXTREMELYHARSHSUNLIGHTWASNOTLESSENED] = COMPOUND_STRING("The extremely harsh sunlight was not lessened at all!"),
     [STRINGID_HEAVYRAIN]                            = COMPOUND_STRING("A heavy rain began to fall!"),
     [STRINGID_HEAVYRAINLIFTED]                      = COMPOUND_STRING("The heavy rain has lifted!"),
-    [STRINGID_MOVEFIZZLEDOUTINTHEHEAVYRAIN]         = COMPOUND_STRING("The Fire-type attack fizzled out in the heavy rain!"),
+    [STRINGID_MOVEFIZZLEDOUTINTHEHEAVYRAIN]         = COMPOUND_STRING("The Fire-type attack fizzled out in the monsoon!"),
     [STRINGID_NORELIEFROMHEAVYRAIN]                 = COMPOUND_STRING("There is no relief from this heavy rain!"),
     [STRINGID_MYSTERIOUSAIRCURRENT]                 = COMPOUND_STRING("Mysterious strong winds are protecting Flying-type Pokémon!"),
     [STRINGID_STRONGWINDSDISSIPATED]                = COMPOUND_STRING("The mysterious strong winds have dissipated!"),
@@ -891,7 +891,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SANDSTORM_UP]                         = COMPOUND_STRING("A sandstorm havocs the field!"),
     [STRINGID_HAILSTORM_UP]                         = COMPOUND_STRING("A hailstorm batters all!"),
     [STRINGID_LIGHTNING_STORM_UP]                   = COMPOUND_STRING("A lightning storm looms over..."),
-    [STRINGID_EARTHQUAKE_UP]                        = COMPOUND_STRING("An earthquake approaches..."),
+    [STRINGID_EARTHQUAKE_UP]                        = COMPOUND_STRING("An earthquake shakes the ground!"),
     [STRINGID_ETHER_UP]                             = COMPOUND_STRING("Psychic ether bleeds into our reality!"),
     [STRINGID_POLLEN_UP]                            = COMPOUND_STRING("The pollen count rises!"),
     [STRINGID_TORNADO_UP]                           = COMPOUND_STRING("A tornado is whipped up!"),
@@ -902,14 +902,22 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ACID_RAIN_UP]                         = COMPOUND_STRING("Acid rain starts corroding the field!"),
     [STRINGID_RAINBOW_UP]                           = COMPOUND_STRING("Oh my Arceus! It's a rainbow!"),
     [STRINGID_SOLAR_FLARE_UP]                       = COMPOUND_STRING("Solar flares rain down!!"),
-    [STRINGID_HARSH_SUN_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is dried up by the sun!"),
+    [STRINGID_HARSH_SUN_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is scorched by the sun!"),
     [STRINGID_SANDSTORM_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is grated by the sand!"),
     [STRINGID_HAILSTORM_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is crushed by the hail!"),
     [STRINGID_EARTHQUAKE_DAMAGED]                   = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} crashes down!"),
     [STRINGID_POLLEN_DAMAGED]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s allergies flare up!"),
-    [STRINGID_LIGHTNING_STORM_PARA]                 = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is paralyzed!"),
+    [STRINGID_HUMID_DAMAGED]                        = COMPOUND_STRING("It's too gross out! {B_ATK_NAME_WITH_PREFIX} takes damage!"),
+    [STRINGID_LIGHTNING_STORM_PARA]                 = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is paralyzed, so it may be unable to move!"),
     [STRINGID_ACID_RAIN_POISON]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is poisoned!"),
     [STRINGID_CHANGE_WEATHER]                       = COMPOUND_STRING("The weather is changing!"),
+    [STRINGID_ICEEVAPORATEDINTHEHARSHSUNLIGHT]      = COMPOUND_STRING("The Ice-type attack evaporated in the blisteringly harsh sunlight!!"),
+    [STRINGID_LIGHTNING_STORM_PREP]                 = COMPOUND_STRING("The lightning storm strikes down!"),
+    [STRINGID_ACID_RAIN_PREP]                       = COMPOUND_STRING("The acid rain melts everything!"),
+    [STRINGID_ETHER_NO_EFFECT_FIGHTING]             = COMPOUND_STRING("The ether storm nullified the Fighting-type move!"),
+    [STRINGID_ETHER_NO_EFFECT_POISON]               = COMPOUND_STRING("The ether storm nullified the Poison-type move!"),
+    [STRINGID_RAINBOW_NO_EFFECT_DARK]               = COMPOUND_STRING("The Dark-type move had no effect! It's too homophobic!"),
+    [STRINGID_RAINBOW_NO_EFFECT_DRAGON]             = COMPOUND_STRING("The Dragon-type move had no effect! It's too homophobic!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1049,15 +1057,23 @@ const u16 gWeatherEndsStringIds[B_MSG_WEATHER_END_COUNT] =
 
 const u16 gSandStormHailSnowContinuesStringIds[] =
 {
-    [B_MSG_SANDSTORM] = STRINGID_SANDSTORMRAGES,
-    [B_MSG_HAIL]      = STRINGID_HAILCONTINUES,
-    [B_MSG_SNOW]      = STRINGID_SNOWCONTINUES,
+    [B_MSG_SANDSTORM]   = STRINGID_SANDSTORM_UP,
+    [B_MSG_HAIL]        = STRINGID_HAILSTORM_UP,
+    [B_MSG_SNOW]        = STRINGID_SNOWCONTINUES,
+    [B_MSG_SUN]         = STRINGID_HARSH_SUN_UP,
+    [B_MSG_EARTHQUAKE]  = STRINGID_EARTHQUAKE_UP,
+    [B_MSG_POLLEN]      = STRINGID_POLLEN_UP,
+    [B_MSG_HUMID]       = STRINGID_HUMID_UP,
 };
 
 const u16 gSandStormHailDmgStringIds[] =
 {
-    [B_MSG_SANDSTORM] = STRINGID_PKMNBUFFETEDBYSANDSTORM,
-    [B_MSG_HAIL]      = STRINGID_PKMNPELTEDBYHAIL
+    [B_MSG_SANDSTORM]   = STRINGID_SANDSTORM_DAMAGED,
+    [B_MSG_HAIL]        = STRINGID_HAILSTORM_DAMAGED,
+    [B_MSG_SUN]         = STRINGID_HARSH_SUN_DAMAGED,
+    [B_MSG_EARTHQUAKE]  = STRINGID_EARTHQUAKE_DAMAGED,
+    [B_MSG_POLLEN]      = STRINGID_POLLEN_DAMAGED,
+    [B_MSG_HUMID]       = STRINGID_HUMID_DAMAGED,
 };
 
 const u16 gSandStormHailSnowEndStringIds[] =
@@ -1306,7 +1322,22 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_DROUGHT]            = STRINGID_SUNLIGHTISHARSH,
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,
-    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING
+    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
+    [WEATHER_HARSH_SUN]            = STRINGID_HARSH_SUN_UP,
+    [WEATHER_MONSOON]          = STRINGID_MONSOON_UP,
+    [WEATHER_HAILSTORM]        = STRINGID_HAILSTORM_UP,
+    [WEATHER_LIGHTNING_STORM]  = STRINGID_LIGHTNING_STORM_UP,
+    [WEATHER_EARTHQUAKE]       = STRINGID_EARTHQUAKE_UP,
+    [WEATHER_ETHER]            = STRINGID_ETHER_UP,
+    [WEATHER_POLLEN]           = STRINGID_POLLEN_UP,
+    [WEATHER_TORNADO]          = STRINGID_TORNADO_UP,
+    [WEATHER_REGULAR_DAY]      = STRINGID_REGULAR_DAY_UP,
+    [WEATHER_HUMID]            = STRINGID_HUMID_UP,
+    [WEATHER_FOG]              = STRINGID_FOG_UP,
+    [WEATHER_ECLIPSE]          = STRINGID_ECLIPSE_UP,
+    [WEATHER_ACID_RAIN]        = STRINGID_ACID_RAIN_UP,
+    [WEATHER_RAINBOW]          = STRINGID_RAINBOW_UP,
+    [WEATHER_SOLAR_FLARE]      = STRINGID_SOLAR_FLARE_UP,
 };
 
 const u16 gTerrainStartsStringIds[] =
@@ -1321,6 +1352,11 @@ const u16 gPrimalWeatherBlocksStringIds[] =
 {
     [B_MSG_PRIMAL_WEATHER_FIZZLED_BY_RAIN]      = STRINGID_MOVEFIZZLEDOUTINTHEHEAVYRAIN,
     [B_MSG_PRIMAL_WEATHER_EVAPORATED_IN_SUN]    = STRINGID_MOVEEVAPORATEDINTHEHARSHSUNLIGHT,
+    [B_MSG_ICE_EVAPORATED_IN_SUN]               = STRINGID_ICEEVAPORATEDINTHEHARSHSUNLIGHT,
+    [B_MSG_ETHER_FIGHTING]                      = STRINGID_ETHER_NO_EFFECT_FIGHTING,
+    [B_MSG_ETHER_POISON]                        = STRINGID_ETHER_NO_EFFECT_POISON,
+    [B_MSG_RAINBOW_DARK]                        = STRINGID_RAINBOW_NO_EFFECT_DARK,
+    [B_MSG_RAINBOW_DRAGON]                      = STRINGID_RAINBOW_NO_EFFECT_DRAGON,
 };
 
 const u16 gInobedientStringIds[] =

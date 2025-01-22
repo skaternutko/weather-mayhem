@@ -1196,18 +1196,53 @@ static void Cmd_attackcanceler(void)
     if (AtkCanceller_UnableToUseMove(moveType))
         return;
 
-    if (WEATHER_HAS_EFFECT && gMovesInfo[gCurrentMove].power)
+    if (WEATHER_HAS_EFFECT)
     {
-        if (moveType == TYPE_FIRE && (gBattleWeather & B_WEATHER_RAIN_PRIMAL))
+        if (moveType == TYPE_FIRE && (gBattleWeather & B_WEATHER_RAIN))
         {
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PRIMAL_WEATHER_FIZZLED_BY_RAIN;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
             return;
         }
-        else if (moveType == TYPE_WATER && (gBattleWeather & B_WEATHER_SUN_PRIMAL))
+        else if (moveType == TYPE_WATER && (gBattleWeather & B_WEATHER_SUN))
         {
             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PRIMAL_WEATHER_EVAPORATED_IN_SUN;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
+            return;
+        }
+        else if (moveType == TYPE_ICE && (gBattleWeather & B_WEATHER_SUN))
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ICE_EVAPORATED_IN_SUN;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
+            return;
+        }
+        else if (moveType == TYPE_FIGHTING && (gBattleWeather & B_WEATHER_ETHER))
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ETHER_FIGHTING;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
+            return;
+        }
+        else if (moveType == TYPE_POISON && (gBattleWeather & B_WEATHER_ETHER))
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ETHER_POISON;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
+            return;
+        }
+        else if (moveType == TYPE_DARK && (gBattleWeather & B_WEATHER_RAINBOW))
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAINBOW_DARK;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
+            return;
+        }
+        else if (moveType == TYPE_DRAGON && (gBattleWeather & B_WEATHER_RAINBOW))
+        {
+            gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAINBOW_DRAGON;
             BattleScriptPushCursor();
             gBattlescriptCurrInstr = BattleScript_PrimalWeatherBlocksMove;
             return;
@@ -1639,9 +1674,46 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (B_AFFECTION_MECHANICS == TRUE && GetBattlerAffectionHearts(battlerDef) == AFFECTION_FIVE_HEARTS)
         calc = (calc * 90) / 100;
 
-    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_FOG)
-        calc = (calc * 60) / 100; // modified by 3/5
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_RAIN)
+    {
+        if (gBattleMons[battlerAtk].types[0] == TYPE_FLYING || gBattleMons[battlerAtk].types[1] == TYPE_FLYING || gBattleMons[battlerAtk].types[2] == TYPE_FLYING)
+            calc = calc * 2; // modified by 2
+    }
 
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_SANDSTORM)
+    {
+        calc = calc * 0.5; // modified by 1/2
+        if ((gBattleMons[battlerAtk].types[0] == TYPE_ROCK || gBattleMons[battlerAtk].types[1] == TYPE_ROCK || gBattleMons[battlerAtk].types[2] == TYPE_ROCK)
+        || (gBattleMons[battlerAtk].types[0] == TYPE_STEEL || gBattleMons[battlerAtk].types[1] == TYPE_STEEL || gBattleMons[battlerAtk].types[2] == TYPE_STEEL)
+        || (gBattleMons[battlerAtk].types[0] == TYPE_GROUND || gBattleMons[battlerAtk].types[1] == TYPE_GROUND || gBattleMons[battlerAtk].types[2] == TYPE_GROUND))
+        {
+            calc = calc * 2; // back to normal if the type matches
+        } 
+             
+    }
+
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_TORNADO)
+    {
+        if ((gBattleMons[battlerAtk].types[0] != TYPE_ROCK || gBattleMons[battlerAtk].types[1] != TYPE_ROCK || gBattleMons[battlerAtk].types[2] != TYPE_ROCK)
+        || (gBattleMons[battlerAtk].types[0] != TYPE_STEEL || gBattleMons[battlerAtk].types[1] != TYPE_STEEL || gBattleMons[battlerAtk].types[2] != TYPE_STEEL)
+        || (gBattleMons[battlerAtk].types[0] != TYPE_FLYING || gBattleMons[battlerAtk].types[1] != TYPE_FLYING || gBattleMons[battlerAtk].types[2] != TYPE_FLYING))
+        {
+            calc = calc * 0.5; // modified by 1/2
+        }
+        if (gBattleMons[battlerAtk].types[0] == TYPE_FLYING || gBattleMons[battlerAtk].types[1] == TYPE_FLYING || gBattleMons[battlerAtk].types[2] == TYPE_FLYING)
+        {
+            calc = calc * 2; // modified by 2
+        }       
+    }
+
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_FOG)
+    {
+        calc = calc * 0.5; // modified by 1/2
+        if (gBattleMons[battlerAtk].types[0] == TYPE_GHOST || gBattleMons[battlerAtk].types[1] == TYPE_GHOST || gBattleMons[battlerAtk].types[2] == TYPE_GHOST)
+        {
+            calc = calc * 2; // back to normal if type matches
+        }         
+    }
     return calc;
 }
 

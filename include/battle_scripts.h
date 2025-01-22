@@ -853,6 +853,16 @@ extern const u8 BattleScript_EffectFickleBeam[];
 extern const u8 BattleScript_FickleBeamDoubled[];
 
 // NEW WEATHER RELATED BATTLESCRIPTS
-extern const u8 BattleScript_RandomWeatherEndTurn[];
+extern const u8 BattleScript_RandomWeatherEndTurn_Step_1[];
+extern const u8 BattleScript_RandomWeatherEndTurn_Step_2[];
+extern const u8 BattleScript_LightningStorm[];
+extern const u8 BattleScript_LightningStorm_Para[];
+extern const u8 BattleScript_LightningStorm_End[];
+extern const u8 BattleScript_Earthquake[];
+extern const u8 BattleScript_Pollen[];
+extern const u8 BattleScript_Humid[];
+extern const u8 BattleScript_AcidRain[];
+extern const u8 BattleScript_AcidRain_Poison[];
+extern const u8 BattleScript_AcidRain_End[];
 
-#endif // GUARD_BATTLE_SCRIPTS_H
+#endif //GUARD_BATTLE_SCRIPTS_H

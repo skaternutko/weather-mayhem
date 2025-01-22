@@ -5862,6 +5862,18 @@ BattleScript_DamagingWeather::
 	hitanimation BS_SCRIPTING
 	goto BattleScript_DoTurnDmg
 
+BattleScript_Earthquake::
+	playanimation BS_ATTACKER, B_ANIM_EARTHQUAKE
+	goto BattleScript_DamagingWeather
+
+BattleScript_Pollen::
+	playanimation BS_ATTACKER, B_ANIM_POLLEN
+	goto BattleScript_DamagingWeather
+
+BattleScript_Humid::
+	playanimation BS_ATTACKER, B_ANIM_HUMID
+	goto BattleScript_DamagingWeather
+
 BattleScript_IceBodyHeal::
 	call BattleScript_AbilityPopUpScripting
 	playanimation BS_SCRIPTING, B_ANIM_SIMPLE_HEAL
@@ -5907,7 +5919,43 @@ BattleScript_FogEnded::
 	call BattleScript_FogEnded_Ret
 	end2
 
-BattleScript_RandomWeatherEndTurn::
+BattleScript_LightningStorm::
+	printstring STRINGID_LIGHTNING_STORM_PREP
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_LIGHTNING_STORM
+	end2
+
+BattleScript_LightningStorm_Para::
+	statusanimation BS_ATTACKER
+	printstring STRINGID_LIGHTNING_STORM_PARA
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_ATTACKER
+	waitstate
+BattleScript_LightningStorm_End:
+	end2
+
+BattleScript_AcidRain::
+	printstring STRINGID_ACID_RAIN_PREP
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_ATTACKER, B_ANIM_ACID_RAIN
+	end2
+
+BattleScript_AcidRain_Poison::
+	statusanimation BS_ATTACKER
+	printstring STRINGID_ACID_RAIN_POISON
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_ATTACKER
+	waitstate
+BattleScript_AcidRain_End:
+	end2
+
+BattleScript_RandomWeatherEndTurn_Step_1::
+	printstring STRINGID_CHANGE_WEATHER
+	waitmessage B_WAIT_TIME_LONG	
+	call BattleScript_RandomWeatherEndTurn_Step_2
+	end2
+
+BattleScript_RandomWeatherEndTurn_Step_2::	
 	printfromtable gRandomWeather
 	waitmessage B_WAIT_TIME_LONG
 	playanimation_var BS_ATTACKER, sB_ANIM_ARG1

@@ -1622,6 +1622,8 @@ enum
     ENDTURN_HAIL,
     ENDTURN_SNOW,
     ENDTURN_FOG,
+    ENDTURN_LIGHTNING_STORM,
+    ENDTURN_ACID_RAIN,
     ENDTURN_DAMAGE_NON_TYPES,
     ENDTURN_GRAVITY,
     ENDTURN_WATER_SPORT,
@@ -1959,9 +1961,10 @@ u8 DoFieldEndTurnEffects(void)
                 }
                 else
                 {
-                    gBattlescriptCurrInstr = BattleScript_SunlightContinues;
+                    gBattlescriptCurrInstr = BattleScript_DamagingWeatherContinues;
                 }
-
+                gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SUN;
                 BattleScriptExecute(gBattlescriptCurrInstr);
                 effect++;
             }
@@ -2021,6 +2024,22 @@ u8 DoFieldEndTurnEffects(void)
                 }
 
                 BattleScriptExecute(gBattlescriptCurrInstr);
+                effect++;
+            }
+            gBattleStruct->turnCountersTracker++;
+            break;
+        case ENDTURN_LIGHTNING_STORM:
+            if (gBattleWeather & B_WEATHER_LIGHTNING_STORM)
+            {
+                BattleScriptExecute(BattleScript_LightningStorm);
+                effect++;
+            }
+            gBattleStruct->turnCountersTracker++;
+            break;
+        case ENDTURN_ACID_RAIN:
+            if (gBattleWeather & B_WEATHER_ACID_RAIN)
+            {
+                BattleScriptExecute(BattleScript_AcidRain);
                 effect++;
             }
             gBattleStruct->turnCountersTracker++;
@@ -2242,6 +2261,7 @@ u8 DoFieldEndTurnEffects(void)
 enum
 {
     ENDTURN_WEATHER_DAMAGE,
+    ENDTURN_WEATHER_STATUS,
     ENDTURN_INGRAIN,
     ENDTURN_AQUA_RING,
     ENDTURN_ABILITIES,
@@ -2349,6 +2369,19 @@ u8 DoBattlerEndTurnEffects(void)
                 BattleScriptExecute(BattleScript_DamagingWeather);
                 effect++;
             }
+            else if (gBattleWeather & B_WEATHER_SUN
+                  && ability != ABILITY_OVERCOAT
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FIRE)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                gBattleScripting.battler = battler;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                BattleScriptExecute(BattleScript_DamagingWeather);
+                effect++;
+            }
             else if (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW)
                   && ability == ABILITY_ICE_BODY
                   && !(gStatuses3[battler] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
@@ -2369,11 +2402,90 @@ u8 DoBattlerEndTurnEffects(void)
                   && GetBattlerHoldEffect(battler, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
             {
                 gBattleScripting.battler = battler;
-                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 16;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / 4;
                 if (gBattleMoveDamage == 0)
                     gBattleMoveDamage = 1;
                 BattleScriptExecute(BattleScript_DamagingWeather);
                 effect++;
+            }
+            else if (gBattleWeather & B_WEATHER_EARTHQUAKE
+                  && ability != ABILITY_OVERCOAT
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GROUND)
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_FLYING)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                gBattleScripting.battler = battler;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /8;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_EARTHQUAKE;
+                BattleScriptExecute(BattleScript_Earthquake);
+                effect++;
+            }
+            else if (gBattleWeather & B_WEATHER_POLLEN
+                  && ability != ABILITY_OVERCOAT
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GRASS)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                gBattleScripting.battler = battler;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /16;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_POLLEN;
+                BattleScriptExecute(BattleScript_Pollen);
+                effect++;
+            }
+            else if (gBattleWeather & B_WEATHER_HUMID
+                  && ability != ABILITY_OVERCOAT
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_BUG)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                gBattleScripting.battler = battler;
+                gBattleMoveDamage = GetNonDynamaxMaxHP(battler) /16;
+                if (gBattleMoveDamage == 0)
+                    gBattleMoveDamage = 1;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HUMID;
+                BattleScriptExecute(BattleScript_Humid);
+                effect++;
+            }
+            gBattleStruct->turnEffectsTracker++;
+            break;
+        case ENDTURN_WEATHER_STATUS:
+            ability = GetBattlerAbility(battler);
+            if (gBattleWeather & B_WEATHER_LIGHTNING_STORM
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_ELECTRIC)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                u16 battlerAbility = GetBattlerAbility(battler);
+                if (battlerAbility != ABILITY_LIMBER
+                 && !IsLeafGuardProtected(battler))
+                {
+                    gBattleMons[gBattlerAttacker].status1 = STATUS1_PARALYSIS;
+                    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[battler].status1);
+                    MarkBattlerForControllerExec(battler);
+                    BattleScriptExecute(BattleScript_LightningStorm_Para);
+                    effect++;
+                }
+            }
+            else if (gBattleWeather & B_WEATHER_ACID_RAIN
+                  && !IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_POISON)
+                  && !(gStatuses3[gBattlerAttacker] & (STATUS3_UNDERGROUND | STATUS3_UNDERWATER))
+                  && GetBattlerHoldEffect(gBattlerAttacker, TRUE) != HOLD_EFFECT_SAFETY_GOGGLES)
+            {
+                u16 battlerAbility = GetBattlerAbility(battler);
+                if (battlerAbility != ABILITY_IMMUNITY
+                 && !IsLeafGuardProtected(battler))
+                {
+                    gBattleMons[gBattlerAttacker].status1 = STATUS1_POISON;
+                    BtlController_EmitSetMonData(battler, BUFFER_A, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].status1), &gBattleMons[battler].status1);
+                    MarkBattlerForControllerExec(battler);
+                    BattleScriptExecute(BattleScript_AcidRain_Poison);
+                    effect++;
+                }
             }
             gBattleStruct->turnEffectsTracker++;
             break;
@@ -4535,11 +4647,121 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     }
                     break;
                 }
+            case WEATHER_SUNNY:
+            case WEATHER_SUNNY_CLOUDS:
+            case WEATHER_VOLCANIC_ASH:
+            case WEATHER_UNDERWATER:
+            case WEATHER_SHADE:
+            case WEATHER_UNDERWATER_BUBBLES:
+            case WEATHER_ABNORMAL:
+            case WEATHER_ROUTE119_CYCLE:
+            case WEATHER_ROUTE123_CYCLE:
+            case WEATHER_NONE:
+                effect++;
+                switch (Random() % 15)
+                {
+                case 0: // HARSH_SUNLIGHT
+                    //change weather
+                    gBattleWeather = B_WEATHER_SUN;
+                    //assign text
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_HARSH_SUN;
+                    //assign animation
+                    gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
+                    break;
+                case 1: // MONSOON
+                    gBattleWeather = B_WEATHER_RAIN;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_MONSOON;
+                    gBattleScripting.animArg1 = B_ANIM_RAIN_CONTINUES;
+                    break;
+                case 2: // SANDSTORM
+                    gBattleWeather = B_WEATHER_SANDSTORM;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_SANDSTORM;
+                    gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
+                    break;
+                case 3: // HAILSTORM
+                    gBattleWeather = B_WEATHER_HAIL;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_HAILSTORM;
+                    gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                    break;
+                case 4: // LIGHTNING_STORM
+                    gBattleWeather = B_WEATHER_LIGHTNING_STORM;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_LIGHTNING_STORM;
+                    gBattleScripting.animArg1 = B_ANIM_LIGHTNING_STORM;
+                    break;
+                case 5: // EARTHQUAKE
+                    gBattleWeather = B_WEATHER_EARTHQUAKE;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_EARTHQUAKE;
+                    gBattleScripting.animArg1 = B_ANIM_EARTHQUAKE;
+                    break;
+                case 6: // ETHER
+                    gBattleWeather = B_WEATHER_ETHER;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_ETHER;
+                    gBattleScripting.animArg1 = B_ANIM_ETHER;
+                    break;
+                case 7: // POLLEN
+                    gBattleWeather = B_WEATHER_POLLEN;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_POLLEN;
+                    gBattleScripting.animArg1 = B_ANIM_POLLEN;
+                    break;
+                case 8: // TORNADO
+                    gBattleWeather = B_WEATHER_TORNADO;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_TORNADO;
+                    gBattleScripting.animArg1 = B_ANIM_TORNADO;
+                    break;
+                case 9: // REGULAR_DAY
+                    gBattleWeather = B_WEATHER_REGULAR_DAY;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_REGULAR_DAY;
+                    gBattleScripting.animArg1 = B_ANIM_REGULAR_DAY;
+                    break;
+                case 10: // HUMID
+                    gBattleWeather = B_WEATHER_HUMID;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_HUMID;
+                    gBattleScripting.animArg1 = B_ANIM_HUMID;
+                    break;
+                case 11: // FOG
+                    gBattleWeather = B_WEATHER_FOG;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_FOG;
+                    gBattleScripting.animArg1 = B_ANIM_FOG_CONTINUES;
+                    break;
+                case 12: // ECLIPSE
+                    gBattleWeather = B_WEATHER_ECLIPSE;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_ECLIPSE;
+                    gBattleScripting.animArg1 = B_ANIM_ECLIPSE;
+                    break;
+                case 13: // ACID_RAIN
+                    gBattleWeather = B_WEATHER_ACID_RAIN;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_ACID_RAIN;
+                    gBattleScripting.animArg1 = B_ANIM_ACID_RAIN;
+                    break;
+                case 14: // RAINBOW
+                    gBattleWeather = B_WEATHER_RAINBOW;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_RAINBOW;
+                    gBattleScripting.animArg1 = B_ANIM_RAINBOW;
+                    break;
+                case 15: // SOLAR_FLARE
+                    gBattleWeather = B_WEATHER_SOLAR_FLARE;
+                    gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_SOLAR_FLARE;
+                    gBattleScripting.animArg1 = B_ANIM_SOLAR_FLARE;
+                    break;
+                }
+                break;
             }
         }
         if (effect != 0)
         {
-            gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+            switch (GetCurrentWeather())
+            {
+            case WEATHER_RAIN:
+            case WEATHER_RAIN_THUNDERSTORM:
+            case WEATHER_DOWNPOUR:
+            case WEATHER_SANDSTORM:
+            case WEATHER_DROUGHT:
+            case WEATHER_SNOW:
+            case WEATHER_FOG_DIAGONAL:
+            case WEATHER_FOG_HORIZONTAL:
+                gBattleCommunication[MULTISTRING_CHOOSER] = GetCurrentWeather();
+                break;
+            }
             BattleScriptPushCursorAndCallback(BattleScript_OverworldWeatherStarts);
         }
         break;
@@ -10070,6 +10292,7 @@ static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageCalculationDa
 }
 
 // Utility Umbrella holders take normal damage from what would be rain- and sun-weakened attacks.
+// weather stab calcs
 static uq4_12_t GetWeatherDamageModifier(struct DamageCalculationData *damageCalcData, u32 holdEffectAtk, u32 holdEffectDef, u32 weather)
 {
     u32 move = damageCalcData->move;
@@ -10078,7 +10301,7 @@ static uq4_12_t GetWeatherDamageModifier(struct DamageCalculationData *damageCal
     if (weather == B_WEATHER_NONE)
         return UQ_4_12(1.0);
     if (gMovesInfo[move].effect == EFFECT_HYDRO_STEAM && (weather & B_WEATHER_SUN) && holdEffectAtk != HOLD_EFFECT_UTILITY_UMBRELLA)
-        return UQ_4_12(1.5);
+        return UQ_4_12(2.5);
     if (holdEffectDef == HOLD_EFFECT_UTILITY_UMBRELLA)
         return UQ_4_12(1.0);
 
@@ -10086,13 +10309,67 @@ static uq4_12_t GetWeatherDamageModifier(struct DamageCalculationData *damageCal
     {
         if (moveType != TYPE_FIRE && moveType != TYPE_WATER)
             return UQ_4_12(1.0);
-        return (moveType == TYPE_FIRE) ? UQ_4_12(0.5) : UQ_4_12(1.5);
+        return (moveType == TYPE_FIRE) ? UQ_4_12(0.5) : UQ_4_12(2.5);
     }
     if (weather & B_WEATHER_SUN)
     {
         if (moveType != TYPE_FIRE && moveType != TYPE_WATER)
             return UQ_4_12(1.0);
-        return (moveType == TYPE_WATER) ? UQ_4_12(0.5) : UQ_4_12(1.5);
+        return (moveType == TYPE_WATER) ? UQ_4_12(0.5) : UQ_4_12(2.5);
+    }
+    if (weather & B_WEATHER_ETHER)
+    {
+        if (moveType != TYPE_PSYCHIC && moveType != TYPE_NORMAL)
+            return UQ_4_12(1.0);
+        return (moveType == TYPE_NORMAL) ? UQ_4_12(0.5) : UQ_4_12(2.5);
+    }
+    if (weather & B_WEATHER_POLLEN)
+    {
+        if (moveType != TYPE_GRASS)
+            return UQ_4_12(1.0);
+        else
+            return UQ_4_12(2.5);
+    }
+    if (weather & B_WEATHER_REGULAR_DAY)
+    {
+        if (moveType != TYPE_NORMAL)
+            return UQ_4_12(1.0);
+        else
+            return UQ_4_12(10.0);
+    }
+    if (weather & B_WEATHER_HUMID)
+    {
+        if (moveType != TYPE_BUG)
+            return UQ_4_12(1.0);
+        else
+            return UQ_4_12(2.5);
+    }
+    if (weather & B_WEATHER_FOG)
+    {
+        if (moveType != TYPE_PSYCHIC)
+            return UQ_4_12(1.0);
+        else
+            return UQ_4_12(0.5);
+    }
+    if (weather & B_WEATHER_ECLIPSE)
+    {
+        if (moveType != TYPE_DARK && moveType != TYPE_GHOST)
+            return UQ_4_12(1.0);
+        else
+            return UQ_4_12(2.5);
+    }
+    if (weather & B_WEATHER_RAINBOW)
+    {
+        if (moveType != TYPE_FAIRY)
+            return UQ_4_12(1.0);
+        else
+            return UQ_4_12(2.5);
+    }
+    if (weather & B_WEATHER_SOLAR_FLARE)
+    {
+        if (moveType != TYPE_DRAGON && moveType != TYPE_NORMAL)
+            return UQ_4_12(1.0);
+        return (moveType == TYPE_NORMAL) ? UQ_4_12(0.5) : UQ_4_12(2.5);
     }
     return UQ_4_12(1.0);
 }
@@ -10318,6 +10595,7 @@ static inline uq4_12_t GetOtherModifiers(struct DamageCalculationData *damageCal
     u32 battlerDefPartner = BATTLE_PARTNER(battlerDef);
     u32 unmodifiedAttackerSpeed = gBattleMons[battlerAtk].speed;
     u32 unmodifiedDefenderSpeed = gBattleMons[battlerDef].speed;
+    
     //TODO: Behemoth Blade, Behemoth Bash, Dynamax Cannon (Dynamax)
     DAMAGE_MULTIPLY_MODIFIER(GetMinimizeModifier(move, battlerDef));
     DAMAGE_MULTIPLY_MODIFIER(GetUndergroundModifier(move, battlerDef));
@@ -10375,6 +10653,14 @@ static inline s32 DoMoveDamageCalcVars(struct DamageCalculationData *damageCalcD
     DAMAGE_APPLY_MODIFIER(GetCriticalModifier(damageCalcData->isCrit));
     DAMAGE_APPLY_MODIFIER(GetGlaiveRushModifier(battlerDef));
 
+    if (weather & B_WEATHER_ACID_RAIN){
+        if((gBattleMons[battlerDef].types[0] == TYPE_GRASS || gBattleMons[battlerDef].types[1] == TYPE_GRASS || gBattleMons[battlerDef].types[2] == TYPE_GRASS) ||
+        (gBattleMons[battlerDef].types[0] == TYPE_STEEL || gBattleMons[battlerDef].types[1] == TYPE_STEEL || gBattleMons[battlerDef].types[2] == TYPE_STEEL))
+        {
+            dmg *= 1.5;
+        }
+    }
+    
     if (damageCalcData->randomFactor)
     {
         dmg *= DMG_ROLL_PERCENT_HI - RandomUniform(RNG_DAMAGE_MODIFIER, 0, DMG_ROLL_PERCENT_HI - DMG_ROLL_PERCENT_LO);

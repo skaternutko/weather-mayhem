@@ -19,6 +19,23 @@
 #define WEATHER_ABNORMAL                15  // The alternating weather during Groudon/Kyogre conflict
 #define WEATHER_ROUTE119_CYCLE          20
 #define WEATHER_ROUTE123_CYCLE          21
+// New weathers that are randomly set on battle start
+#define WEATHER_HARSH_SUN               22
+#define WEATHER_MONSOON                 23
+//SANDSTORM ALREADY DEFINED
+#define WEATHER_HAILSTORM               25
+#define WEATHER_LIGHTNING_STORM         26
+#define WEATHER_EARTHQUAKE              27
+#define WEATHER_ETHER                   28
+#define WEATHER_POLLEN                  29
+#define WEATHER_TORNADO                 30
+#define WEATHER_REGULAR_DAY             31
+#define WEATHER_HUMID                   32
+#define WEATHER_FOG                     33
+#define WEATHER_ECLIPSE                 34
+#define WEATHER_ACID_RAIN               35
+#define WEATHER_RAINBOW                 36
+#define WEATHER_SOLAR_FLARE             37
 
 // These are used in maps' coord_weather_event entries.
 // They are not a one-to-one mapping with the engine's

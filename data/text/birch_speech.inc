@@ -29,6 +29,16 @@ gText_Birch_MainSpeech::
 	.string "$"
 
 gText_Birch_AndYouAre::
+	.string "Now I gotta lay it on real.\p"
+	.string "I don't know if KYOGRE and\n"
+	.string "GROUDON had 10 more siblings,\l"
+	.string "or climate change finally hit end state,\l"
+	.string "but HOENN has been having\l"
+	.string "some extreme weather lately.\p"
+	.string "The POKéMON can't seem to\n"
+	.string "figure it out either.\p"
+	.string "Best of luck if you're looking.\n"
+	.string "to become a POKéMON MASTER.\p"
 	.string "And you are?$"
 
 gText_Birch_BoyOrGirl::

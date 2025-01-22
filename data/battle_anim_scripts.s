@@ -28303,6 +28303,36 @@ gBattleAnimGeneral_Snow::
 gBattleAnimGeneral_Fog::
 	goto gBattleAnimMove_Haze
 
+gBattleAnimGeneral_LightningStorm::
+	goto gBattleAnimMove_Thunder
+
+gBattleAnimGeneral_Earthquake::
+	goto gBattleAnimMove_Earthquake
+
+gBattleAnimGeneral_Ether::
+	goto gBattleAnimMove_MagicRoom
+
+gBattleAnimGeneral_Pollen::
+	goto gBattleAnimMove_CottonGuard
+
+gBattleAnimGeneral_Tornado::
+	goto gBattleAnimMove_Hurricane
+
+gBattleAnimGeneral_RegularDay::
+	end
+
+gBattleAnimGeneral_Humid::
+	goto gBattleAnimMove_Infestation
+
+gBattleAnimGeneral_Eclipse::
+	goto gBattleAnimMove_Moonlight
+
+gBattleAnimGeneral_AcidRain::
+	goto gBattleAnimMove_RainDance
+
+gBattleAnimGeneral_SolarFlare::
+	goto gBattleAnimMove_SunnyDay
+
 gBattleAnimGeneral_LeechSeedDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
 	delay 0

@@ -204,7 +204,7 @@ EWRAM_DATA u8 gBattleCommunication[BATTLE_COMMUNICATION_ENTRIES_COUNT] = {0};
 EWRAM_DATA u8 gBattleOutcome = 0;
 EWRAM_DATA struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT] = {0};
-EWRAM_DATA u16 gBattleWeather = 0;
+EWRAM_DATA u32 gBattleWeather = 0;
 EWRAM_DATA struct WishFutureKnock gWishFutureKnock = {0};
 EWRAM_DATA u16 gIntroSlideFlags = 0;
 EWRAM_DATA u8 gSentPokesToOpponent[2] = {0};
@@ -4099,23 +4099,93 @@ void BattleTurnPassed(void)
     //2. Battlescript takes the arguments and plays stuff out as normal
     // I should start by defining everything. This includes: B_WEATHER_[WEATHER] (and all that comes with it), weather incoming dialog (and weather damage dialog when applicable), weather animation
 
-    switch (Random() % 4)
+    switch (Random() % 15)
     {
-    case 0: // HARSH SUNLIGHT
+    case 0: // HARSH_SUNLIGHT
         //change weather
         gBattleWeather = B_WEATHER_SUN;
         //assign text
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HARSH_SUN_UP;
         //assign animation
         gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
+        break;
     case 1: // MONSOON
+        gBattleWeather = B_WEATHER_RAIN;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MONSOON_UP;
+        gBattleScripting.animArg1 = B_ANIM_RAIN_CONTINUES;
         break;
     case 2: // SANDSTORM
+        gBattleWeather = B_WEATHER_SANDSTORM;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SANDSTORM_UP;
+        gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
         break;
-    case 3: // LIGHTNING STORM
+    case 3: // HAILSTORM
+        gBattleWeather = B_WEATHER_HAIL;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HAILSTORM_UP;
+        gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+        break;
+    case 4: // LIGHTNING_STORM
+        gBattleWeather = B_WEATHER_LIGHTNING_STORM;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_LIGHTNING_STORM_UP;
+        gBattleScripting.animArg1 = B_ANIM_LIGHTNING_STORM;
+        break;
+    case 5: // EARTHQUAKE
+        gBattleWeather = B_WEATHER_EARTHQUAKE;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_EARTHQUAKE_UP;
+        gBattleScripting.animArg1 = B_ANIM_EARTHQUAKE;
+        break;
+    case 6: // ETHER
+        gBattleWeather = B_WEATHER_ETHER;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ETHER_UP;
+        gBattleScripting.animArg1 = B_ANIM_ETHER;
+        break;
+    case 7: // POLLEN
+        gBattleWeather = B_WEATHER_POLLEN;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_POLLEN_UP;
+        gBattleScripting.animArg1 = B_ANIM_POLLEN;
+        break;
+    case 8: // TORNADO
+        gBattleWeather = B_WEATHER_TORNADO;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TORNADO_UP;
+        gBattleScripting.animArg1 = B_ANIM_TORNADO;
+        break;
+    case 9: // REGULAR_DAY
+        gBattleWeather = B_WEATHER_REGULAR_DAY;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_REGULAR_DAY_UP;
+        gBattleScripting.animArg1 = B_ANIM_REGULAR_DAY;
+        break;
+    case 10: // HUMID
+        gBattleWeather = B_WEATHER_HUMID;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HUMID_UP;
+        gBattleScripting.animArg1 = B_ANIM_HUMID;
+        break;
+    case 11: // FOG
+        gBattleWeather = B_WEATHER_FOG;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FOG_UP;
+        gBattleScripting.animArg1 = B_ANIM_FOG_CONTINUES;
+        break;
+    case 12: // ECLIPSE
+        gBattleWeather = B_WEATHER_ECLIPSE;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ECLIPSE_UP;
+        gBattleScripting.animArg1 = B_ANIM_ECLIPSE;
+        break;
+    case 13: // ACID_RAIN
+        gBattleWeather = B_WEATHER_ACID_RAIN;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ACID_RAIN_UP;
+        gBattleScripting.animArg1 = B_ANIM_ACID_RAIN;
+        break;
+    case 14: // RAINBOW
+        gBattleWeather = B_WEATHER_RAINBOW;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAINBOW_UP;
+        gBattleScripting.animArg1 = B_ANIM_RAINBOW;
+        break;
+    case 15: // SOLAR_FLARE
+        gBattleWeather = B_WEATHER_SOLAR_FLARE;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SOLAR_FLARE_UP;
+        gBattleScripting.animArg1 = B_ANIM_SOLAR_FLARE;
         break;
     }
-    BattleScriptExecute(BattleScript_RandomWeatherEndTurn);
+    BattleScriptExecute(BattleScript_RandomWeatherEndTurn_Step_1);
 }
 
 u8 IsRunningFromBattleImpossible(u32 battler)
@@ -4809,6 +4879,24 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
             speed *= 2;
     }
 
+    // NEW WEATHER SPEED EFFECTS
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_RAIN)
+    {
+        if (gBattleMons[battler].types[0] == TYPE_ELECTRIC || gBattleMons[battler].types[1] == TYPE_ELECTRIC || gBattleMons[battler].types[2] == TYPE_ELECTRIC)
+            speed *= 2;
+    }
+
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_POLLEN)
+    {
+        if (gBattleMons[battler].types[0] == TYPE_BUG || gBattleMons[battler].types[1] == TYPE_BUG || gBattleMons[battler].types[2] == TYPE_BUG)
+            speed /= 2;
+    }
+
+    if (WEATHER_HAS_EFFECT && gBattleWeather & B_WEATHER_FOG)
+    {
+        if (gBattleMons[battler].types[0] == TYPE_GHOST || gBattleMons[battler].types[1] == TYPE_GHOST || gBattleMons[battler].types[2] == TYPE_GHOST)
+            speed *= 2;
+    }
     // other abilities
     if (ability == ABILITY_QUICK_FEET && gBattleMons[battler].status1 & STATUS1_ANY)
         speed = (speed * 150) / 100;
