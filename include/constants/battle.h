@@ -309,6 +309,18 @@
 #define B_WEATHER_FOG_TEMPORARY       (1 << 14)
 #define B_WEATHER_FOG_PERMANENT       (1 << 15)
 #define B_WEATHER_FOG                 (B_WEATHER_FOG_TEMPORARY | B_WEATHER_FOG_PERMANENT)
+#define B_WEATHER_LIGHTNING_STORM     (1 << 16)
+#define B_WEATHER_EARTHQUAKE          (1 << 17)
+#define B_WEATHER_ETHER               (1 << 18)
+#define B_WEATHER_POLLEN              (1 << 19)
+#define B_WEATHER_TORNADO             (1 << 20)
+#define B_WEATHER_REGULAR_DAY         (1 << 21)
+#define B_WEATHER_HUMID               (1 << 22)
+#define B_WEATHER_ECLIPSE             (1 << 23)
+#define B_WEATHER_ACID_RAIN           (1 << 24)
+#define B_WEATHER_RAINBOW             (1 << 25)
+#define B_WEATHER_SOLAR_FLARE         (1 << 26)
+
 
 // Battle Weather as enum
 #define ENUM_WEATHER_NONE                 0
@@ -321,6 +333,17 @@
 #define ENUM_WEATHER_STRONG_WINDS         7
 #define ENUM_WEATHER_SNOW                 8
 #define ENUM_WEATHER_FOG                  9
+#define ENUM_WEATHER_LIGHTNING_STORM     10
+#define ENUM_WEATHER_EARTHQUAKE          11
+#define ENUM_WEATHER_ETHER               12
+#define ENUM_WEATHER_POLLEN              13
+#define ENUM_WEATHER_TORNADO             14
+#define ENUM_WEATHER_REGULAR_DAY         15
+#define ENUM_WEATHER_HUMID               16
+#define ENUM_WEATHER_ECLIPSE             17
+#define ENUM_WEATHER_ACID_RAIN           18
+#define ENUM_WEATHER_RAINBOW             19
+#define ENUM_WEATHER_SOLAR_FLARE         20
 
 // Move Effects
 #define MOVE_EFFECT_SLEEP               1

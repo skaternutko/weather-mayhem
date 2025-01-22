@@ -852,4 +852,7 @@ extern const u8 BattleScript_DamageToQuarterTargetHP[];
 extern const u8 BattleScript_EffectFickleBeam[];
 extern const u8 BattleScript_FickleBeamDoubled[];
 
+// NEW WEATHER RELATED BATTLESCRIPTS
+extern const u8 BattleScript_RandomWeatherEndTurn[];
+
 #endif // GUARD_BATTLE_SCRIPTS_H

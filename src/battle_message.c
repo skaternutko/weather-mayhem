@@ -885,6 +885,31 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ELECTRICCURRENTISRUNNING]             = COMPOUND_STRING("An electric current is running across the battlefield!"),
     [STRINGID_SEEMSWEIRD]                           = COMPOUND_STRING("The battlefield seems weird!"),
     [STRINGID_WAGGLINGAFINGER]                      = COMPOUND_STRING("Waggling a finger let it use {B_CURRENT_MOVE}!"),
+    //NEW WEATHER STRINGS
+    [STRINGID_HARSH_SUN_UP]                         = COMPOUND_STRING("Blistering sunlight dries the field!"),
+    [STRINGID_MONSOON_UP]                           = COMPOUND_STRING("A torrential monsoon crashes down!"),
+    [STRINGID_SANDSTORM_UP]                         = COMPOUND_STRING("A sandstorm havocs the field!"),
+    [STRINGID_HAILSTORM_UP]                         = COMPOUND_STRING("A hailstorm batters all!"),
+    [STRINGID_LIGHTNING_STORM_UP]                   = COMPOUND_STRING("A lightning storm looms over..."),
+    [STRINGID_EARTHQUAKE_UP]                        = COMPOUND_STRING("An earthquake approaches..."),
+    [STRINGID_ETHER_UP]                             = COMPOUND_STRING("Psychic ether bleeds into our reality!"),
+    [STRINGID_POLLEN_UP]                            = COMPOUND_STRING("The pollen count rises!"),
+    [STRINGID_TORNADO_UP]                           = COMPOUND_STRING("A tornado is whipped up!"),
+    [STRINGID_REGULAR_DAY_UP]                       = COMPOUND_STRING("...but all seems too normal..."),
+    [STRINGID_HUMID_UP]                             = COMPOUND_STRING("The humidity rapidly rises!"),
+    [STRINGID_FOG_UP]                               = COMPOUND_STRING("A thick fog settles in!"),
+    [STRINGID_ECLIPSE_UP]                           = COMPOUND_STRING("The moon eclipses the sun!"),
+    [STRINGID_ACID_RAIN_UP]                         = COMPOUND_STRING("Acid rain starts corroding the field!"),
+    [STRINGID_RAINBOW_UP]                           = COMPOUND_STRING("Oh my Arceus! It's a rainbow!"),
+    [STRINGID_SOLAR_FLARE_UP]                       = COMPOUND_STRING("Solar flares rain down!!"),
+    [STRINGID_HARSH_SUN_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is dried up by the sun!"),
+    [STRINGID_SANDSTORM_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is grated by the sand!"),
+    [STRINGID_HAILSTORM_DAMAGED]                    = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is crushed by the hail!"),
+    [STRINGID_EARTHQUAKE_DAMAGED]                   = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} crashes down!"),
+    [STRINGID_POLLEN_DAMAGED]                       = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s allergies flare up!"),
+    [STRINGID_LIGHTNING_STORM_PARA]                 = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is paralyzed!"),
+    [STRINGID_ACID_RAIN_POISON]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is poisoned!"),
+    [STRINGID_CHANGE_WEATHER]                       = COMPOUND_STRING("The weather is changing!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1400,6 +1425,26 @@ const u16 gDamageNonTypesDmgStringIds[] =
     [B_MSG_HURT_BY_VORTEX]       = STRINGID_PKMNHURTBYVORTEX,
     [B_MSG_BURNING_UP]           = STRINGID_PKMNBURNINGUP,
     [B_MSG_HURT_BY_ROCKS_THROWN] = STRINGID_PKMNHURTBYROCKSTHROWN,
+};
+
+const u16 gRandomWeather[] =
+{
+    [B_MSG_HARSH_SUN_UP]        = STRINGID_HARSH_SUN_UP,
+    [B_MSG_MONSOON_UP]          = STRINGID_MONSOON_UP,
+    [B_MSG_SANDSTORM_UP]        = STRINGID_SANDSTORM_UP,
+    [B_MSG_HAILSTORM_UP]        = STRINGID_HAILSTORM_UP,
+    [B_MSG_LIGHTNING_STORM_UP]  = STRINGID_LIGHTNING_STORM_UP,
+    [B_MSG_EARTHQUAKE_UP]       = STRINGID_EARTHQUAKE_UP,
+    [B_MSG_ETHER_UP]            = STRINGID_ETHER_UP,
+    [B_MSG_POLLEN_UP]           = STRINGID_POLLEN_UP,
+    [B_MSG_TORNADO_UP]          = STRINGID_TORNADO_UP,
+    [B_MSG_REGULAR_DAY_UP]      = STRINGID_REGULAR_DAY_UP,
+    [B_MSG_HUMID_UP]            = STRINGID_HUMID_UP,
+    [B_MSG_FOG_UP]              = STRINGID_FOG_UP,
+    [B_MSG_ECLIPSE_UP]          = STRINGID_ECLIPSE_UP,
+    [B_MSG_ACID_RAIN_UP]        = STRINGID_ACID_RAIN_UP,
+    [B_MSG_RAINBOW_UP]          = STRINGID_RAINBOW_UP,
+    [B_MSG_SOLAR_FLARE_UP]      = STRINGID_SOLAR_FLARE_UP,
 };
 
 const u8 gText_PkmnIsEvolving[] = _("What?\n{STR_VAR_1} is evolving!");

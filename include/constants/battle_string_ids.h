@@ -725,7 +725,38 @@
 #define STRINGID_SEEMSWEIRD                           723
 #define STRINGID_WAGGLINGAFINGER                      724
 
-#define BATTLESTRINGS_COUNT                           725
+// NEW WEATHER STRINGIDS
+
+#define STRINGID_HARSH_SUN_UP                         725
+#define STRINGID_MONSOON_UP                         726
+#define STRINGID_SANDSTORM_UP                       727
+#define STRINGID_HAILSTORM_UP                       728
+#define STRINGID_LIGHTNING_STORM_UP                 729
+#define STRINGID_EARTHQUAKE_UP                      730
+#define STRINGID_ETHER_UP                           731
+#define STRINGID_POLLEN_UP                          732
+#define STRINGID_TORNADO_UP                         733
+#define STRINGID_REGULAR_DAY_UP                     734
+#define STRINGID_HUMID_UP                           735
+#define STRINGID_FOG_UP                             736
+#define STRINGID_ECLIPSE_UP                         737
+#define STRINGID_ACID_RAIN_UP                       738
+#define STRINGID_RAINBOW_UP                         739
+#define STRINGID_SOLAR_FLARE_UP                     740
+
+#define STRINGID_HARSH_SUN_DAMAGED                  741
+#define STRINGID_SANDSTORM_DAMAGED                       742
+#define STRINGID_HAILSTORM_DAMAGED                       743
+#define STRINGID_EARTHQUAKE_DAMAGED                      744
+#define STRINGID_POLLEN_DAMAGED                          745
+#define STRINGID_HUMID_DAMAGED                           746
+
+#define STRINGID_LIGHTNING_STORM_PARA                747
+#define STRINGID_ACID_RAIN_POISON                       748
+
+#define STRINGID_CHANGE_WEATHER                     749
+
+#define BATTLESTRINGS_COUNT                           750
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -1053,5 +1084,24 @@
 #define B_MSG_HURT_BY_VORTEX    1
 #define B_MSG_BURNING_UP  2
 #define B_MSG_HURT_BY_ROCKS_THROWN 3
+
+// gRandomWeather
+#define B_MSG_HARSH_SUN_UP          0
+#define B_MSG_MONSOON_UP            1
+#define B_MSG_SANDSTORM_UP          2
+#define B_MSG_HAILSTORM_UP          3
+#define B_MSG_LIGHTNING_STORM_UP    4
+#define B_MSG_EARTHQUAKE_UP         5
+#define B_MSG_ETHER_UP              6
+#define B_MSG_POLLEN_UP             7
+#define B_MSG_TORNADO_UP            8
+#define B_MSG_REGULAR_DAY_UP        9
+#define B_MSG_HUMID_UP              10
+#define B_MSG_FOG_UP                11
+#define B_MSG_ECLIPSE_UP            12
+#define B_MSG_ACID_RAIN_UP          13
+#define B_MSG_RAINBOW_UP            14
+#define B_MSG_SOLAR_FLARE_UP        15
+
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

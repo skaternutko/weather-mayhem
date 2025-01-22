@@ -11311,6 +11311,7 @@ static void Cmd_setfieldweather(void)
         return;
     }
 
+    //will prob update this for when i tackle weather at start of battle
     switch (weather)
     {
     case ENUM_WEATHER_RAIN:

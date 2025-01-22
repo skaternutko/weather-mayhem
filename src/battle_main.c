@@ -4091,6 +4091,31 @@ void BattleTurnPassed(void)
 
 
     //Handle Weather at end of Turn
+    //i gotta restart everything ;-;
+    //fuck it now that i know how to do everything and am not toying with testing, lets see how fast i could do this
+    //steps
+    //1. Randomly select a number in a switch. Each case goes to a different weather to be assigned in a Battlescript, with its message, animation
+        //Battlescript should look at how weather "happens"
+    //2. Battlescript takes the arguments and plays stuff out as normal
+    // I should start by defining everything. This includes: B_WEATHER_[WEATHER] (and all that comes with it), weather incoming dialog (and weather damage dialog when applicable), weather animation
+
+    switch (Random() % 4)
+    {
+    case 0: // HARSH SUNLIGHT
+        //change weather
+        gBattleWeather = B_WEATHER_SUN;
+        //assign text
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HARSH_SUN_UP;
+        //assign animation
+        gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
+    case 1: // MONSOON
+        break;
+    case 2: // SANDSTORM
+        break;
+    case 3: // LIGHTNING STORM
+        break;
+    }
+    BattleScriptExecute(BattleScript_RandomWeatherEndTurn);
 }
 
 u8 IsRunningFromBattleImpossible(u32 battler)

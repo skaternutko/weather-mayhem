@@ -5907,6 +5907,12 @@ BattleScript_FogEnded::
 	call BattleScript_FogEnded_Ret
 	end2
 
+BattleScript_RandomWeatherEndTurn::
+	printfromtable gRandomWeather
+	waitmessage B_WAIT_TIME_LONG
+	playanimation_var BS_ATTACKER, sB_ANIM_ARG1
+	end2
+
 BattleScript_OverworldStatusStarts::
 	printfromtable gStartingStatusStringIds
 	waitmessage B_WAIT_TIME_LONG
