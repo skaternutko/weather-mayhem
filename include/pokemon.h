@@ -675,7 +675,7 @@ struct FormChange
 {
     u16 method;
     u16 targetSpecies;
-    u16 param1;
+    u32 param1;
     u16 param2;
     u16 param3;
 };

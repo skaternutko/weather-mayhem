@@ -4179,13 +4179,76 @@ void BattleTurnPassed(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_RAINBOW_UP;
         gBattleScripting.animArg1 = B_ANIM_RAINBOW;
         break;
-    case 15: // SOLAR_FLARE
+    default: // SOLAR_FLARE
         gBattleWeather = B_WEATHER_SOLAR_FLARE;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SOLAR_FLARE_UP;
         gBattleScripting.animArg1 = B_ANIM_SOLAR_FLARE;
         break;
     }
     BattleScriptExecute(BattleScript_RandomWeatherEndTurn_Step_1);
+
+    // Castform will change right after the new weather is set (but the game shows it as before, whatever it works!)
+    for (i = 0; i < gBattlersCount; i++)
+    {
+        if((gBattleMons[i].ability == ABILITY_FORECAST))
+        {
+            switch (gBattleWeather)
+            {
+            case B_WEATHER_SUN:
+                gBattleMons[i].species = SPECIES_CASTFORM_SUNNY;
+                break;
+            case B_WEATHER_RAIN: // MONSOON
+                gBattleMons[i].species = SPECIES_CASTFORM_RAINY;
+                break;
+            case B_WEATHER_SANDSTORM: // SANDSTORM
+                gBattleMons[i].species = SPECIES_CASTFORM_SANDSTORM;
+                break;
+            case B_WEATHER_HAIL: // HAILSTORM
+                gBattleMons[i].species = SPECIES_CASTFORM_SNOWY;
+                break;
+            case B_WEATHER_LIGHTNING_STORM: // LIGHTNING_STORM
+                gBattleMons[i].species = SPECIES_CASTFORM_LIGHTNING;
+                break;
+            case B_WEATHER_EARTHQUAKE: // EARTHQUAKE
+                gBattleMons[i].species = SPECIES_CASTFORM_EARTHQUAKE;
+                break;
+            case B_WEATHER_ETHER: // ETHER
+                gBattleMons[i].species = SPECIES_CASTFORM_ETHER;
+                break;
+            case B_WEATHER_POLLEN: // POLLEN
+                gBattleMons[i].species = SPECIES_CASTFORM_POLLEN;
+                break;
+            case B_WEATHER_TORNADO: // TORNADO
+                gBattleMons[i].species = SPECIES_CASTFORM_TORNADO;
+                break;
+            case B_WEATHER_REGULAR_DAY: // REGULAR_DAY
+                gBattleMons[i].species = SPECIES_CASTFORM_NORMAL;
+                break;
+            case B_WEATHER_HUMID: // HUMID
+                gBattleMons[i].species = SPECIES_CASTFORM_HUMID;
+                break;
+            case B_WEATHER_FOG: // FOG
+                gBattleMons[i].species = SPECIES_CASTFORM_FOG;
+                break;
+            case B_WEATHER_ECLIPSE: // ECLIPSE
+                gBattleMons[i].species = SPECIES_CASTFORM_ECLIPSE;
+                break;
+            case B_WEATHER_ACID_RAIN: // ACID_RAIN
+                gBattleMons[i].species = SPECIES_CASTFORM_ACID;
+                break;
+            case B_WEATHER_RAINBOW: // RAINBOW
+                gBattleMons[i].species = SPECIES_CASTFORM_RAINBOW;
+                break;
+            case B_WEATHER_SOLAR_FLARE: // SOLAR_FLARE
+                gBattleMons[i].species = SPECIES_CASTFORM_SOLARFLARE;
+                break;
+            }
+            gBattleScripting.battler = i;
+            BattleScriptPushCursorAndCallback(BattleScript_BattlerFormChangeWithStringEnd3);
+        }
+    }
+
+    
 }
 
 u8 IsRunningFromBattleImpossible(u32 battler)
@@ -5998,6 +6061,30 @@ u32 GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, u8 *ateBoost)
                 return TYPE_FIRE;
             else if (gBattleWeather & (B_WEATHER_SNOW | B_WEATHER_HAIL))
                 return TYPE_ICE;
+            else if (gBattleWeather & B_WEATHER_ACID_RAIN)
+                return TYPE_POISON;
+            else if (gBattleWeather & B_WEATHER_ECLIPSE)
+                return TYPE_DARK;
+            else if (gBattleWeather & B_WEATHER_ETHER)
+                return TYPE_PSYCHIC;
+            else if (gBattleWeather & B_WEATHER_EARTHQUAKE)
+                return TYPE_GROUND;
+            else if (gBattleWeather & B_WEATHER_SANDSTORM)
+                return TYPE_ROCK;
+            else if (gBattleWeather & B_WEATHER_SOLAR_FLARE)
+                return TYPE_DRAGON;
+            else if (gBattleWeather & B_WEATHER_RAINBOW)
+                return TYPE_FAIRY;
+            else if (gBattleWeather & B_WEATHER_TORNADO)
+                return TYPE_FLYING;
+            else if (gBattleWeather & B_WEATHER_LIGHTNING_STORM)
+                return TYPE_ELECTRIC;
+            else if (gBattleWeather & B_WEATHER_POLLEN)
+                return TYPE_GRASS;
+            else if (gBattleWeather & B_WEATHER_HUMID)
+                return TYPE_BUG;
+            else if (gBattleWeather & B_WEATHER_TORNADO)
+                return TYPE_FLYING;
             else
                 return moveType;
         }

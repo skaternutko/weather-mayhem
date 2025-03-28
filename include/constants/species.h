@@ -1638,7 +1638,21 @@
 #define SPECIES_MIMIKYU_BUSTED_TOTEM                    1523
 #define SPECIES_MIMIKYU_TOTEM_BUSTED                    SPECIES_MIMIKYU_BUSTED_TOTEM
 
-#define SPECIES_EGG                                     (SPECIES_MIMIKYU_BUSTED_TOTEM + 1)
+// NEW CASTFORM FORMS
+#define SPECIES_CASTFORM_ACID                           1524
+#define SPECIES_CASTFORM_EARTHQUAKE                     1525
+#define SPECIES_CASTFORM_ECLIPSE                        1526
+#define SPECIES_CASTFORM_ETHER                          1527
+#define SPECIES_CASTFORM_FOG                            1528
+#define SPECIES_CASTFORM_HUMID                          1529
+#define SPECIES_CASTFORM_LIGHTNING                      1530
+#define SPECIES_CASTFORM_POLLEN                         1531
+#define SPECIES_CASTFORM_RAINBOW                        1532
+#define SPECIES_CASTFORM_SANDSTORM                      1533
+#define SPECIES_CASTFORM_TORNADO                      1534
+#define SPECIES_CASTFORM_SOLARFLARE                     1535
+
+#define SPECIES_EGG                                     (SPECIES_CASTFORM_SOLARFLARE + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

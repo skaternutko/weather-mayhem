@@ -4738,7 +4738,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_RAINBOW;
                     gBattleScripting.animArg1 = B_ANIM_RAINBOW;
                     break;
-                case 15: // SOLAR_FLARE
+                default: // SOLAR_FLARE
                     gBattleWeather = B_WEATHER_SOLAR_FLARE;
                     gBattleCommunication[MULTISTRING_CHOOSER] = WEATHER_SOLAR_FLARE;
                     gBattleScripting.animArg1 = B_ANIM_SOLAR_FLARE;
@@ -6685,6 +6685,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
         switch (gLastUsedAbility)
         {
         case ABILITY_FORECAST:
+        //figure out this later, with castform not changing form on switch in w/ new weathers
         case ABILITY_FLOWER_GIFT:
             if ((IsBattlerWeatherAffected(battler, gBattleWeather)
              || gBattleWeather == B_WEATHER_NONE

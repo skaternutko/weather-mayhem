@@ -875,6 +875,18 @@ static const u16 sCastformFormSpeciesIdTable[] = {
     SPECIES_CASTFORM_SUNNY,
     SPECIES_CASTFORM_RAINY,
     SPECIES_CASTFORM_SNOWY,
+    SPECIES_CASTFORM_ACID,                           
+    SPECIES_CASTFORM_EARTHQUAKE,                   
+    SPECIES_CASTFORM_ECLIPSE,                     
+    SPECIES_CASTFORM_ETHER,                      
+    SPECIES_CASTFORM_FOG,                        
+    SPECIES_CASTFORM_HUMID,                       
+    SPECIES_CASTFORM_LIGHTNING,                  
+    SPECIES_CASTFORM_POLLEN,                      
+    SPECIES_CASTFORM_RAINBOW,                       
+    SPECIES_CASTFORM_SANDSTORM,   
+    SPECIES_CASTFORM_TORNADO,                   
+    SPECIES_CASTFORM_SOLARFLARE,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_CASTFORM

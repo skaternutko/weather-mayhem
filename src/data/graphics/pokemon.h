@@ -12772,6 +12772,90 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     const u32 gMonShinyPalette_CastformSnowy[] = INCBIN_U32("graphics/pokemon/castform/snowy/shiny.gbapal.lz");
     const u8 gMonIcon_CastformSnowy[] = INCBIN_U8("graphics/pokemon/castform/snowy/icon.4bpp");
 
+    //acid
+    const u32 gMonFrontPic_CastformAcid[] = INCBIN_U32("graphics/pokemon/castform/acid/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformAcid[] = INCBIN_U32("graphics/pokemon/castform/acid/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformAcid[] = INCBIN_U32("graphics/pokemon/castform/acid/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformAcid[] = INCBIN_U32("graphics/pokemon/castform/acid/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformAcid[] = INCBIN_U8("graphics/pokemon/castform/acid/icon.4bpp");
+
+    //earthquake
+    const u32 gMonFrontPic_CastformEarthquake[] = INCBIN_U32("graphics/pokemon/castform/earthquake/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformEarthquake[] = INCBIN_U32("graphics/pokemon/castform/earthquake/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformEarthquake[] = INCBIN_U32("graphics/pokemon/castform/earthquake/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformEarthquake[] = INCBIN_U32("graphics/pokemon/castform/earthquake/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformEarthquake[] = INCBIN_U8("graphics/pokemon/castform/earthquake/icon.4bpp");
+
+    //eclipse
+    const u32 gMonFrontPic_CastformEclipse[] = INCBIN_U32("graphics/pokemon/castform/eclipse/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformEclipse[] = INCBIN_U32("graphics/pokemon/castform/eclipse/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformEclipse[] = INCBIN_U32("graphics/pokemon/castform/eclipse/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformEclipse[] = INCBIN_U32("graphics/pokemon/castform/eclipse/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformEclipse[] = INCBIN_U8("graphics/pokemon/castform/eclipse/icon.4bpp");
+
+    //ether
+    const u32 gMonFrontPic_CastformEther[] = INCBIN_U32("graphics/pokemon/castform/ether/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformEther[] = INCBIN_U32("graphics/pokemon/castform/ether/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformEther[] = INCBIN_U32("graphics/pokemon/castform/ether/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformEther[] = INCBIN_U32("graphics/pokemon/castform/ether/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformEther[] = INCBIN_U8("graphics/pokemon/castform/ether/icon.4bpp");
+
+    //fog
+    const u32 gMonFrontPic_CastformFog[] = INCBIN_U32("graphics/pokemon/castform/fog/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformFog[] = INCBIN_U32("graphics/pokemon/castform/fog/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformFog[] = INCBIN_U32("graphics/pokemon/castform/fog/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformFog[] = INCBIN_U32("graphics/pokemon/castform/fog/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformFog[] = INCBIN_U8("graphics/pokemon/castform/fog/icon.4bpp");
+
+    //humid
+    const u32 gMonFrontPic_CastformHumid[] = INCBIN_U32("graphics/pokemon/castform/humid/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformHumid[] = INCBIN_U32("graphics/pokemon/castform/humid/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformHumid[] = INCBIN_U32("graphics/pokemon/castform/humid/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformHumid[] = INCBIN_U32("graphics/pokemon/castform/humid/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformHumid[] = INCBIN_U8("graphics/pokemon/castform/humid/icon.4bpp");
+
+    //lightning
+    const u32 gMonFrontPic_CastformLightning[] = INCBIN_U32("graphics/pokemon/castform/lightning/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformLightning[] = INCBIN_U32("graphics/pokemon/castform/lightning/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformLightning[] = INCBIN_U32("graphics/pokemon/castform/lightning/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformLightning[] = INCBIN_U32("graphics/pokemon/castform/lightning/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformLightning[] = INCBIN_U8("graphics/pokemon/castform/lightning/icon.4bpp");
+
+    //pollen
+    const u32 gMonFrontPic_CastformPollen[] = INCBIN_U32("graphics/pokemon/castform/pollen/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformPollen[] = INCBIN_U32("graphics/pokemon/castform/pollen/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformPollen[] = INCBIN_U32("graphics/pokemon/castform/pollen/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformPollen[] = INCBIN_U32("graphics/pokemon/castform/pollen/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformPollen[] = INCBIN_U8("graphics/pokemon/castform/pollen/icon.4bpp");
+
+    //rainbow
+    const u32 gMonFrontPic_CastformRainbow[] = INCBIN_U32("graphics/pokemon/castform/rainbow/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformRainbow[] = INCBIN_U32("graphics/pokemon/castform/rainbow/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformRainbow[] = INCBIN_U32("graphics/pokemon/castform/rainbow/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformRainbow[] = INCBIN_U32("graphics/pokemon/castform/rainbow/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformRainbow[] = INCBIN_U8("graphics/pokemon/castform/rainbow/icon.4bpp");
+
+    //sandstorm
+    const u32 gMonFrontPic_CastformSandstorm[] = INCBIN_U32("graphics/pokemon/castform/sandstorm/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformSandstorm[] = INCBIN_U32("graphics/pokemon/castform/sandstorm/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformSandstorm[] = INCBIN_U32("graphics/pokemon/castform/sandstorm/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformSandstorm[] = INCBIN_U32("graphics/pokemon/castform/sandstorm/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformSandstorm[] = INCBIN_U8("graphics/pokemon/castform/sandstorm/icon.4bpp");
+
+    //solar flare
+    const u32 gMonFrontPic_CastformSolarFlare[] = INCBIN_U32("graphics/pokemon/castform/solarflare/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformSolarFlare[] = INCBIN_U32("graphics/pokemon/castform/solarflare/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformSolarFlare[] = INCBIN_U32("graphics/pokemon/castform/solarflare/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformSolarFlare[] = INCBIN_U32("graphics/pokemon/castform/solarflare/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformSolarFlare[] = INCBIN_U8("graphics/pokemon/castform/solarflare/icon.4bpp");
+
+    //tornado
+    const u32 gMonFrontPic_CastformTornado[] = INCBIN_U32("graphics/pokemon/castform/tornado/anim_front.4bpp.lz");
+    const u32 gMonPalette_CastformTornado[] = INCBIN_U32("graphics/pokemon/castform/tornado/normal.gbapal.lz");
+    const u32 gMonBackPic_CastformTornado[] = INCBIN_U32("graphics/pokemon/castform/tornado/back.4bpp.lz");
+    const u32 gMonShinyPalette_CastformTornado[] = INCBIN_U32("graphics/pokemon/castform/tornado/shiny.gbapal.lz");
+    const u8 gMonIcon_CastformTornado[] = INCBIN_U8("graphics/pokemon/castform/tornado/icon.4bpp");
+
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_CastformNormal[] = INCBIN_COMP("graphics/pokemon/castform/overworld.4bpp");
     const u32 gObjectEventPic_CastformSunny[] = INCBIN_COMP("graphics/pokemon/castform/sunny/overworld.4bpp");

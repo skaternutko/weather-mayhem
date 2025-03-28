@@ -4736,6 +4736,116 @@ static const union AnimCmd sAnim_CastformSnowy_1[] =
     ANIMCMD_FRAME(0, 12),
     ANIMCMD_END,
 };
+
+static const union AnimCmd sAnim_CastformAcid_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformEarthquake_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformEclipse_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformEther_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformFog_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformHumid_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformLightning_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformPollen_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformRainbow_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformSandstorm_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd sAnim_CastformSolarFlare_1[] =
+{
+    ANIMCMD_FRAME(0, 12),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_FRAME(1, 24),
+    ANIMCMD_FRAME(0, 24),
+    ANIMCMD_END,
+};
 #endif //P_FAMILY_CASTFORM
 
 #if P_FAMILY_KECLEON
@@ -11275,6 +11385,17 @@ SINGLE_ANIMATION(CastformNormal);
 SINGLE_ANIMATION(CastformSunny);
 SINGLE_ANIMATION(CastformRainy);
 SINGLE_ANIMATION(CastformSnowy);
+SINGLE_ANIMATION(CastformAcid);
+SINGLE_ANIMATION(CastformEarthquake);
+SINGLE_ANIMATION(CastformEclipse);
+SINGLE_ANIMATION(CastformEther);
+SINGLE_ANIMATION(CastformFog);
+SINGLE_ANIMATION(CastformHumid);
+SINGLE_ANIMATION(CastformLightning);
+SINGLE_ANIMATION(CastformPollen);
+SINGLE_ANIMATION(CastformRainbow);
+SINGLE_ANIMATION(CastformSandstorm);
+SINGLE_ANIMATION(CastformSolarFlare);
 #endif //P_FAMILY_CASTFORM
 #if P_FAMILY_KECLEON
 SINGLE_ANIMATION(Kecleon);

@@ -28307,13 +28307,35 @@ gBattleAnimGeneral_LightningStorm::
 	goto gBattleAnimMove_Thunder
 
 gBattleAnimGeneral_Earthquake::
-	goto gBattleAnimMove_Earthquake
+	goto gBattleAnimMove_Fissure
 
 gBattleAnimGeneral_Ether::
-	goto gBattleAnimMove_MagicRoom
+	goto gBattleAnimMove_PsychicNoise
 
 gBattleAnimGeneral_Pollen::
-	goto gBattleAnimMove_CottonGuard
+	playsewithpan SE_M_PETAL_DANCE, 0
+	loadspritegfx ANIM_TAG_FLOWER
+	loadspritegfx ANIM_TAG_THIN_RING
+	loadspritegfx ANIM_TAG_SPARKLE_2
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 0, F_PAL_BG, 0, 0, 7, RGB(13, 31, 12)
+	delay 1
+	monbg ANIM_ATTACKER
+	delay 1
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 0, 24, 16, 0, 2, 2, 0, 0
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 66, 64, 24, 0, 3, 1, 1, 0
+	createsprite gAromatherapyBigFlowerSpriteTemplate, ANIM_ATTACKER, 0, 16, 24, 0, 2, 1, 0, 0
+	delay 20
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 66, 48, 12, 0, 4, 3, 1, 0
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 0, 100, 16, 0, 3, 2, 0, 0
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 0, 74, 24, 180, 3, 2, 0, 0
+	delay 10
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 66, 80, 30, 0, 4, 1, 1, 0
+	createsprite gAromatherapySmallFlowerSpriteTemplate, ANIM_ATTACKER, 0, 128, 12, 0, 3, 3, 0, 0
+	createsprite gAromatherapyBigFlowerSpriteTemplate, ANIM_ATTACKER, 0, 90, 16, 0, 2, 1, 0, 0
+	waitforvisualfinish
+	clearmonbg ANIM_ATTACKER
+	blendoff
+	end
 
 gBattleAnimGeneral_Tornado::
 	goto gBattleAnimMove_Hurricane
@@ -28325,13 +28347,49 @@ gBattleAnimGeneral_Humid::
 	goto gBattleAnimMove_Infestation
 
 gBattleAnimGeneral_Eclipse::
-	goto gBattleAnimMove_Moonlight
+	loadspritegfx ANIM_TAG_MOON
+	loadspritegfx ANIM_TAG_GREEN_SPARKLE
+	loadspritegfx ANIM_TAG_BLUE_STAR
+	setalpha 0, 16
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 0, 16, RGB_BLACK
+	waitforvisualfinish
+	createsprite gMoonSpriteTemplate, ANIM_ATTACKER, 2, 120, 56
+	createvisualtask AnimTask_AlphaFadeIn, 3, 0, 16, 16, 0, 1
+	playsewithpan SE_M_MOONLIGHT, 0
+	delay 30
+	createsprite gMoonlightSparkleSpriteTemplate, ANIM_ATTACKER, 40, -12, 0
+	delay 30
+	createsprite gMoonlightSparkleSpriteTemplate, ANIM_ATTACKER, 40, -24, 0
+	delay 30
+	createsprite gMoonlightSparkleSpriteTemplate, ANIM_ATTACKER, 40, 21, 0
+	delay 30
+	createsprite gMoonlightSparkleSpriteTemplate, ANIM_ATTACKER, 40, 0, 0
+	delay 30
+	createsprite gMoonlightSparkleSpriteTemplate, ANIM_ATTACKER, 40, 10, 0
+	delay 20
+	createvisualtask AnimTask_MoonlightEndFade, 2
+	waitforvisualfinish
+	end
 
 gBattleAnimGeneral_AcidRain::
 	goto gBattleAnimMove_RainDance
 
 gBattleAnimGeneral_SolarFlare::
-	goto gBattleAnimMove_SunnyDay
+	createvisualtask SoundTask_PlaySE2WithPanning, 5, SE_M_COSMIC_POWER, 0
+	playsewithpan SE_M_COSMIC_POWER, 0
+	fadetobg BG_COSMIC
+	waitbgfadeout
+	createvisualtask AnimTask_StartSlidingBg, 2, 0, 128, 0, -1
+	waitbgfadein
+	delay 35
+	createvisualtask AnimTask_MorningSunLightBeam, 3
+	delay 160
+	restorebg
+	waitbgfadeout
+	setarg 7, 0xFFFF
+	waitbgfadein
+	waitforvisualfinish
+	end
 
 gBattleAnimGeneral_LeechSeedDrain::
 	createvisualtask AnimTask_GetBattlersFromArg, 5
