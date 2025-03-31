@@ -1,5 +1,9 @@
-# more-weather
-more-weather, more commonly known as Weather Mayhem, is ***a romhack base*** based off pret's [pokeemerald](https://github.com/pret/pokeemerald) decompilation project, using RH Hideout's [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion) fork of the project. More information about the bases of this mod can be read below, as well as how to properly build this project yourself.
+# weather-mayhem
+weather-mayhem, s ***a romhack base*** based off pret's [pokeemerald](https://github.com/pret/pokeemerald) decompilation project, using RH Hideout's [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion) fork of the project. This project can be built using the pokeemerald-expansion instructions below.
+
+The project also includes .pory files, allowing huderlem's [poryscript](https://github.com/huderlem/poryscript) to make editing overworld scripts easier. This tool is only necessary if you're looking to modify .pory files. I chose to keep the files in the public repository so that there is full transparency on what the project is, and help beginners in understanding what goes into these projects.
+
+If you would like to discuss more abut the weather-mayhem project, feel free to join the [Cannons' Creative Server](https://discord.gg/kruZZH5SpC) on Discord.
 
 # pokeemerald-expansion
 
