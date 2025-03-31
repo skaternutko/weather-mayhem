@@ -1,3 +1,6 @@
+# more-weather
+more-weather, more commonly known as Weather Mayhem, is ***a romhack base*** based off pret's [pokeemerald](https://github.com/pret/pokeemerald) decompilation project, using RH Hideout's [pokeemerald-expansion](https://github.com/rh-hideout/pokeemerald-expansion) fork of the project. More information about the bases of this mod can be read below, as well as how to properly build this project yourself.
+
 # pokeemerald-expansion
 
 pokeemerald-expansion is ***a romhack base*** based off pret's [pokeemerald](https://github.com/pret/pokeemerald) decompilation project. ***It is NOT a playable romhack,*** but it has multiple features available to romhackers so that they can create their own games, so it's not meant to be played on its own.
